@@ -46,9 +46,9 @@ const CountryDetails = ({countries}) => {
                   <td>Borders</td>
                   <td>
                     <ul>
-                  {foundCountry.borders.length === 0 ? <p> This country has no borders.</p>: foundCountry.borders.map(elem => {
+                  {foundCountry.borders.length === 0 ? <p> This country has no borders.</p>: foundCountry.borders.map((elem, i) => {
                     return (
-                      <li><Link to={`/${elem}`}>{elem}</Link></li>
+                      <li key={i}><Link to={`/${elem}`}>{elem}</Link></li>
                     )
                   })}
                     </ul>
