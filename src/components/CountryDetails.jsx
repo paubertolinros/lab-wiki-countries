@@ -21,7 +21,7 @@ const CountryDetails = ({countries}) => {
   // }, [countryAlphaCode])
 
   //BONUS
-   useEffect(() => {
+  useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
         `https://ih-countries-api.herokuapp.com/countries/${countryAlphaCode}`
@@ -37,8 +37,6 @@ const CountryDetails = ({countries}) => {
     };
     fetchData();
   }, [countryAlphaCode]);
-
-  console.log(countryAlphaCode)
 
   return (
     <div>

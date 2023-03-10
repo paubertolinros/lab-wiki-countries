@@ -9,7 +9,8 @@ const CountriesList = ({countries}) => {
   }, [countries])
 
   return (
-  <section className="col-5" style={{ maxHeight: "90vh", overflow: "scroll" }} >
+  <div className="col-90">
+    <section className="col-5" style={{ maxHeight: "90vh", overflow: "scroll" }} >
       <div className="list-group">
         {countriesL.map((elem, i) => {
           return (
@@ -18,10 +19,11 @@ const CountriesList = ({countries}) => {
         )
          })}  
       </div>
-      <div>
-        <Outlet />
-      </div>
-</section>
+    </section>
+    <div>
+      <Outlet />
+    </div>
+  </div>
   )
 }     
 export default CountriesList;
