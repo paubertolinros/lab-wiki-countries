@@ -8,19 +8,38 @@ const CountryDetails = ({countries}) => {
   const { countryAlphaCode } = useParams();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [countryData, setCountryData] = useState(null);
 
-  useEffect(() => {
-    const country = countries.find((oneCountry) => oneCountry.alpha3Code == countryAlphaCode);
-    if (country) {
-      setFoundCountry(country);
-      setLoading(false);
-    } else {
-      setLoading(false);
-      setError(true);
-    }
-  }, [countryAlphaCode])
-  
+  // useEffect(() => {
+  //   const country = countries.find((oneCountry) => oneCountry.alpha3Code == countryAlphaCode);
+  //   if (country) {
+  //     setFoundCountry(country);
+  //     setLoading(false);
+  //   } else {
+  //     setLoading(false);
+  //     setError(true);
+  //   }
+  // }, [countryAlphaCode])
+
+  //BONUS
+   useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios(
+        `https://ih-countries-api.herokuapp.com/countries/${countryAlphaCode}`
+      );
+      console.log("result", result)
+      if (result) {
+        setFoundCountry(result.data);
+        setLoading(false);
+      } else {
+        setLoading(false);
+        setError(true);
+      }
+    };
+    fetchData();
+  }, [countryAlphaCode]);
+
+  console.log(countryAlphaCode)
+
   return (
     <div>
       {loading && <p>Loading...</p>}
